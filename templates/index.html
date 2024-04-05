@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #19dfdfef;
+        }
+        h3 {
+            color: #333;
+        }
+        form {
+            background-color: #f5e08bd3;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="number"],
+        select {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heart Disease Predictor</h1>
+    <div>
+        <form action="/predict" method="POST">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age">
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex">
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+            <label for="cp">Chest Pain Type</label>
+            <select id="cp" name="cp">
+                <option value="0">Angina</option>
+                <option value="1">Pericarditis</option>
+                <option value="2">Myocarditis</option>
+                <option value="3">Cardiomyopathy</option>
+            </select>
+            <label for="trestbps">Resting blood pressure (in mm Hg on admission to the hospital)</label>
+            <input type="number" id="trestbps" name="trestbps">
+            <label for="chol">Serum Cholesterol in mg/dl</label>
+            <input type="number" id="chol" name="chol">
+            <label for="fbs">Fasting blood sugar > 120 mg/dl</label>
+            <select id="fbs" name="fbs">
+                <option value="0">False</option>
+                <option value="1">True</option>
+            </select>
+            <label for="restecg">Resting electrocardiographic measurement</label>
+            <select id="restecg" name="restecg">
+                <option value="0">Normal</option>
+                <option value="1">ST-T wave abnormality</option>
+                <option value="2">Probable or definite left ventricular hypertrophy</option>
+            </select>
+            <label for="thalach">Maximum heart rate achieved</label>
+            <input type="number" id="thalach" name="thalach">
+            <label for="exang">Exercise induced angina</label>
+            <select id="exang" name="exang">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+	    <label for="oldpeak">ST depression induced by exercise relative to rest</label>
+	    <input type="number" id="oldpeak" name="oldpeak" step="0.1">
+		
+            <label for="slope">The slope of the peak exercise ST segment</label>
+            <select id="slope" name="slope">
+                <option value="1">Upsloping</option>
+                <option value="2">Flat</option>
+                <option value="3">Downsloping</option>
+            </select>
+            <label for="ca">Number of major vessels (0-3)</label>
+            <input type="number" id="ca" name="ca">
+            <label for="thal">Blood disorder called thalassemia</label>
+            <select id="thal" name="thal">
+                <option value="1">Normal</option>
+                <option value="2">Fixed defect</option>
+                <option value="3">Reversible defect</option>
+            </select>
+            <input type="submit" value="Predict">
+        </form>
+        <br>
+        <br>
+        {{ prediction }}
+        
+    </div>
+    <script
+      src="{{ url_for('static',filename='main.js') }}"
+      type="text/javascript"
+    ></script>
+</body>
+</html>
